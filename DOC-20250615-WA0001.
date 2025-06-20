@@ -1,0 +1,1887 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "d4c17bfe-c676-447b-87a4-9ccdb7044587",
+   "metadata": {},
+   "source": [
+    "# 1.Setup"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "280b9b89-8f39-44fb-98e9-1707cce3fe84",
+   "metadata": {},
+   "source": [
+    "# import pandas libraby"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "fb9f287b-23f9-4d27-ad37-78a9a5a8cb5e",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "import pandas as pd"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a925ec34-d256-4657-96de-9c8c0f82f267",
+   "metadata": {},
+   "source": [
+    "# 2.Loading different data formats into a pandas data frames"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f64a2f7f-ed9f-42e6-887a-6e23a3d30598",
+   "metadata": {},
+   "source": [
+    "## Reading csv file"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "610cbf3c-8dce-494e-bbe2-ae3fdb91be9a",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>age;\"job\";\"marital\";\"education\";\"default\";\"balance\";\"housing\";\"loan\";\"contact\";\"day\";\"month\";\"duration\";\"campaign\";\"pdays\";\"previous\";\"poutcome\";\"y\"</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>4516</th>\n",
+       "      <td>33;\"services\";\"married\";\"secondary\";\"no\";-333;...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4517</th>\n",
+       "      <td>57;\"self-employed\";\"married\";\"tertiary\";\"yes\";...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4518</th>\n",
+       "      <td>57;\"technician\";\"married\";\"secondary\";\"no\";295...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4519</th>\n",
+       "      <td>28;\"blue-collar\";\"married\";\"secondary\";\"no\";11...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4520</th>\n",
+       "      <td>44;\"entrepreneur\";\"single\";\"tertiary\";\"no\";113...</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "     age;\"job\";\"marital\";\"education\";\"default\";\"balance\";\"housing\";\"loan\";\"contact\";\"day\";\"month\";\"duration\";\"campaign\";\"pdays\";\"previous\";\"poutcome\";\"y\"\n",
+       "4516  33;\"services\";\"married\";\"secondary\";\"no\";-333;...                                                                                                  \n",
+       "4517  57;\"self-employed\";\"married\";\"tertiary\";\"yes\";...                                                                                                  \n",
+       "4518  57;\"technician\";\"married\";\"secondary\";\"no\";295...                                                                                                  \n",
+       "4519  28;\"blue-collar\";\"married\";\"secondary\";\"no\";11...                                                                                                  \n",
+       "4520  44;\"entrepreneur\";\"single\";\"tertiary\";\"no\";113...                                                                                                  "
+      ]
+     },
+     "execution_count": 4,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Reading csv file with skip 2 rows without header\n",
+    "df = pd.read_csv(\"C:\\\\Users\\\\shubh\\\\Documents\\\\5th semester\\\\pandas\\\\dataset\\\\bank.csv\")\n",
+    "df.head()\n",
+    "df.tail()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "20684318-6530-4937-a2b1-abff4224dcc2",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>age;\"job\";\"marital\";\"education\";\"default\";\"balance\";\"housing\";\"loan\";\"contact\";\"day\";\"month\";\"duration\";\"campaign\";\"pdays\";\"previous\";\"poutcome\";\"y\"</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>4516</th>\n",
+       "      <td>33;\"services\";\"married\";\"secondary\";\"no\";-333;...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4517</th>\n",
+       "      <td>57;\"self-employed\";\"married\";\"tertiary\";\"yes\";...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4518</th>\n",
+       "      <td>57;\"technician\";\"married\";\"secondary\";\"no\";295...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4519</th>\n",
+       "      <td>28;\"blue-collar\";\"married\";\"secondary\";\"no\";11...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4520</th>\n",
+       "      <td>44;\"entrepreneur\";\"single\";\"tertiary\";\"no\";113...</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "     age;\"job\";\"marital\";\"education\";\"default\";\"balance\";\"housing\";\"loan\";\"contact\";\"day\";\"month\";\"duration\";\"campaign\";\"pdays\";\"previous\";\"poutcome\";\"y\"\n",
+       "4516  33;\"services\";\"married\";\"secondary\";\"no\";-333;...                                                                                                  \n",
+       "4517  57;\"self-employed\";\"married\";\"tertiary\";\"yes\";...                                                                                                  \n",
+       "4518  57;\"technician\";\"married\";\"secondary\";\"no\";295...                                                                                                  \n",
+       "4519  28;\"blue-collar\";\"married\";\"secondary\";\"no\";11...                                                                                                  \n",
+       "4520  44;\"entrepreneur\";\"single\";\"tertiary\";\"no\";113...                                                                                                  "
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.tail()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "a272bc48-061f-4226-8f66-36dd0fd47454",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>age;\"job\";\"marital\";\"education\";\"default\";\"balance\";\"housing\";\"loan\";\"contact\";\"day\";\"month\";\"duration\";\"campaign\";\"pdays\";\"previous\";\"poutcome\";\"y\"</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>30;\"unemployed\";\"married\";\"primary\";\"no\";1787;...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>33;\"services\";\"married\";\"secondary\";\"no\";4789;...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>35;\"management\";\"single\";\"tertiary\";\"no\";1350;...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>30;\"management\";\"married\";\"tertiary\";\"no\";1476...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>59;\"blue-collar\";\"married\";\"secondary\";\"no\";0;...</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "  age;\"job\";\"marital\";\"education\";\"default\";\"balance\";\"housing\";\"loan\";\"contact\";\"day\";\"month\";\"duration\";\"campaign\";\"pdays\";\"previous\";\"poutcome\";\"y\"\n",
+       "0  30;\"unemployed\";\"married\";\"primary\";\"no\";1787;...                                                                                                  \n",
+       "1  33;\"services\";\"married\";\"secondary\";\"no\";4789;...                                                                                                  \n",
+       "2  35;\"management\";\"single\";\"tertiary\";\"no\";1350;...                                                                                                  \n",
+       "3  30;\"management\";\"married\";\"tertiary\";\"no\";1476...                                                                                                  \n",
+       "4  59;\"blue-collar\";\"married\";\"secondary\";\"no\";0;...                                                                                                  "
+      ]
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.head()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "6de95ba6-c49e-4d5d-a1a7-c08e4e6df636",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>35;\"management\";\"single\";\"tertiary\";\"no\";1350;\"yes\";\"no\";\"cellular\";16;\"apr\";185;1;330;1;\"failure\";\"no\"</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>30;\"management\";\"married\";\"tertiary\";\"no\";1476...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>59;\"blue-collar\";\"married\";\"secondary\";\"no\";0;...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>35;\"management\";\"single\";\"tertiary\";\"no\";747;\"...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>36;\"self-employed\";\"married\";\"tertiary\";\"no\";3...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>39;\"technician\";\"married\";\"secondary\";\"no\";147...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>...</th>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4513</th>\n",
+       "      <td>33;\"services\";\"married\";\"secondary\";\"no\";-333;...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4514</th>\n",
+       "      <td>57;\"self-employed\";\"married\";\"tertiary\";\"yes\";...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4515</th>\n",
+       "      <td>57;\"technician\";\"married\";\"secondary\";\"no\";295...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4516</th>\n",
+       "      <td>28;\"blue-collar\";\"married\";\"secondary\";\"no\";11...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4517</th>\n",
+       "      <td>44;\"entrepreneur\";\"single\";\"tertiary\";\"no\";113...</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "<p>4518 rows × 1 columns</p>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "     35;\"management\";\"single\";\"tertiary\";\"no\";1350;\"yes\";\"no\";\"cellular\";16;\"apr\";185;1;330;1;\"failure\";\"no\"\n",
+       "0     30;\"management\";\"married\";\"tertiary\";\"no\";1476...                                                     \n",
+       "1     59;\"blue-collar\";\"married\";\"secondary\";\"no\";0;...                                                     \n",
+       "2     35;\"management\";\"single\";\"tertiary\";\"no\";747;\"...                                                     \n",
+       "3     36;\"self-employed\";\"married\";\"tertiary\";\"no\";3...                                                     \n",
+       "4     39;\"technician\";\"married\";\"secondary\";\"no\";147...                                                     \n",
+       "...                                                 ...                                                     \n",
+       "4513  33;\"services\";\"married\";\"secondary\";\"no\";-333;...                                                     \n",
+       "4514  57;\"self-employed\";\"married\";\"tertiary\";\"yes\";...                                                     \n",
+       "4515  57;\"technician\";\"married\";\"secondary\";\"no\";295...                                                     \n",
+       "4516  28;\"blue-collar\";\"married\";\"secondary\";\"no\";11...                                                     \n",
+       "4517  44;\"entrepreneur\";\"single\";\"tertiary\";\"no\";113...                                                     \n",
+       "\n",
+       "[4518 rows x 1 columns]"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Loading csv file with skip first 2 rows without header\n",
+    "df_csv = pd.read_csv(\"C:\\\\Users\\\\shubh\\\\Documents\\\\5th semester\\\\pandas\\\\dataset\\\\bank.csv\",skiprows=3)\n",
+    "df_csv"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "51850009-4375-4627-a2dc-24562015f00b",
+   "metadata": {},
+   "source": [
+    "## Read csv file from url"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "7fb6ab10-8541-471f-9041-dd18b73473d8",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Month</th>\n",
+       "      <th>\"1958\"</th>\n",
+       "      <th>\"1959\"</th>\n",
+       "      <th>\"1960\"</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>JAN</td>\n",
+       "      <td>340</td>\n",
+       "      <td>360</td>\n",
+       "      <td>417</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>FEB</td>\n",
+       "      <td>318</td>\n",
+       "      <td>342</td>\n",
+       "      <td>391</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>MAR</td>\n",
+       "      <td>362</td>\n",
+       "      <td>406</td>\n",
+       "      <td>419</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>APR</td>\n",
+       "      <td>348</td>\n",
+       "      <td>396</td>\n",
+       "      <td>461</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>MAY</td>\n",
+       "      <td>363</td>\n",
+       "      <td>420</td>\n",
+       "      <td>472</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>5</th>\n",
+       "      <td>JUN</td>\n",
+       "      <td>435</td>\n",
+       "      <td>472</td>\n",
+       "      <td>535</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>6</th>\n",
+       "      <td>JUL</td>\n",
+       "      <td>491</td>\n",
+       "      <td>548</td>\n",
+       "      <td>622</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>7</th>\n",
+       "      <td>AUG</td>\n",
+       "      <td>505</td>\n",
+       "      <td>559</td>\n",
+       "      <td>606</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>8</th>\n",
+       "      <td>SEP</td>\n",
+       "      <td>404</td>\n",
+       "      <td>463</td>\n",
+       "      <td>508</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>9</th>\n",
+       "      <td>OCT</td>\n",
+       "      <td>359</td>\n",
+       "      <td>407</td>\n",
+       "      <td>461</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>10</th>\n",
+       "      <td>NOV</td>\n",
+       "      <td>310</td>\n",
+       "      <td>362</td>\n",
+       "      <td>390</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>11</th>\n",
+       "      <td>DEC</td>\n",
+       "      <td>337</td>\n",
+       "      <td>405</td>\n",
+       "      <td>432</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "   Month   \"1958\"   \"1959\"   \"1960\"\n",
+       "0    JAN      340      360      417\n",
+       "1    FEB      318      342      391\n",
+       "2    MAR      362      406      419\n",
+       "3    APR      348      396      461\n",
+       "4    MAY      363      420      472\n",
+       "5    JUN      435      472      535\n",
+       "6    JUL      491      548      622\n",
+       "7    AUG      505      559      606\n",
+       "8    SEP      404      463      508\n",
+       "9    OCT      359      407      461\n",
+       "10   NOV      310      362      390\n",
+       "11   DEC      337      405      432"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Read csv file from url\n",
+    "url = \"https://people.sc.fsu.edu/~jburkardt/data/csv/airtravel.csv\"\n",
+    "df_url = pd.read_csv(url)\n",
+    "df_url"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "95f8013a-1236-421a-aa40-4138c6520a25",
+   "metadata": {},
+   "source": [
+    "## Read excel file"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 37,
+   "id": "98116a78-816a-43ae-a9b8-c1b98f586765",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>hello..!!</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>WELCOME TO TECHSPOT INFOTECH LLP</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "                          hello..!!\n",
+       "0  WELCOME TO TECHSPOT INFOTECH LLP"
+      ]
+     },
+     "execution_count": 37,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Read text file \n",
+    "df_txt = pd.read_csv(\"C:\\\\Users\\\\shubh\\\\Documents\\\\5th semester\\\\pandas\\\\dataset\\\\hello..!!.txt\")\n",
+    "df_txt"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e8c4cc7e-4ded-42cc-a323-9e9b2fc08d67",
+   "metadata": {},
+   "source": [
+    "## Read text file"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "629bce09-1e74-4c40-9766-ee738448473c",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Transaction_date</th>\n",
+       "      <th>Transaction_ID</th>\n",
+       "      <th>Gender</th>\n",
+       "      <th>Age</th>\n",
+       "      <th>Marital_status</th>\n",
+       "      <th>State_names</th>\n",
+       "      <th>Segment</th>\n",
+       "      <th>Employees_status</th>\n",
+       "      <th>Payment_method</th>\n",
+       "      <th>Referal</th>\n",
+       "      <th>Amount_spent</th>\n",
+       "      <th>Transaction_ID.1</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>3/10/2019</td>\n",
+       "      <td>151378</td>\n",
+       "      <td>Female</td>\n",
+       "      <td>25</td>\n",
+       "      <td>Single</td>\n",
+       "      <td>Wyoming</td>\n",
+       "      <td>Platinum</td>\n",
+       "      <td>Unemployment</td>\n",
+       "      <td>Card</td>\n",
+       "      <td>1</td>\n",
+       "      <td>2740.57</td>\n",
+       "      <td>151378</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>7/2/2019</td>\n",
+       "      <td>151751</td>\n",
+       "      <td>Female</td>\n",
+       "      <td>42</td>\n",
+       "      <td>Single</td>\n",
+       "      <td>Delaware</td>\n",
+       "      <td>Basic</td>\n",
+       "      <td>Unemployment</td>\n",
+       "      <td>Card</td>\n",
+       "      <td>0</td>\n",
+       "      <td>977.80</td>\n",
+       "      <td>151751</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>6/14/2019</td>\n",
+       "      <td>151689</td>\n",
+       "      <td>Male</td>\n",
+       "      <td>38</td>\n",
+       "      <td>Married</td>\n",
+       "      <td>Montana</td>\n",
+       "      <td>Basic</td>\n",
+       "      <td>workers</td>\n",
+       "      <td>PayPal</td>\n",
+       "      <td>1</td>\n",
+       "      <td>2978.21</td>\n",
+       "      <td>151689</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>8/5/2019</td>\n",
+       "      <td>151849</td>\n",
+       "      <td>Male</td>\n",
+       "      <td>24</td>\n",
+       "      <td>Married</td>\n",
+       "      <td>Rhode Island</td>\n",
+       "      <td>Basic</td>\n",
+       "      <td>workers</td>\n",
+       "      <td>Card</td>\n",
+       "      <td>1</td>\n",
+       "      <td>1157.79</td>\n",
+       "      <td>151849</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "  Transaction_date  Transaction_ID  Gender  Age Marital_status   State_names  \\\n",
+       "0        3/10/2019          151378  Female   25         Single       Wyoming   \n",
+       "1         7/2/2019          151751  Female   42         Single      Delaware   \n",
+       "2        6/14/2019          151689    Male   38        Married       Montana   \n",
+       "3         8/5/2019          151849    Male   24        Married  Rhode Island   \n",
+       "\n",
+       "    Segment Employees_status Payment_method  Referal  Amount_spent  \\\n",
+       "0  Platinum     Unemployment           Card        1       2740.57   \n",
+       "1     Basic     Unemployment           Card        0        977.80   \n",
+       "2     Basic          workers         PayPal        1       2978.21   \n",
+       "3     Basic          workers           Card        1       1157.79   \n",
+       "\n",
+       "   Transaction_ID.1  \n",
+       "0            151378  \n",
+       "1            151751  \n",
+       "2            151689  \n",
+       "3            151849  "
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Read excel file\n",
+    "df_excel = pd.read_excel(\"C:\\\\Users\\\\shubh\\\\Documents\\\\5th semester\\\\pandas\\\\dataset\\\\excel_file.xlsx\")\n",
+    "df_excel"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3db4fd8f-6cdd-4cff-89a6-f58d2646e110",
+   "metadata": {},
+   "source": [
+    "# 3.Data Processing"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a28ee746-8619-4ddf-bcda-718511820f6a",
+   "metadata": {},
+   "source": [
+    "## 3.1 Data Exploring"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b2a8c8d3-0816-4b5a-8167-827e644c3cdd",
+   "metadata": {},
+   "source": [
+    "## Retrieving rows from data frame"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "9a54b756-97f4-4cf7-8ecc-1788ced9173f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>age;\"job\";\"marital\";\"education\";\"default\";\"balance\";\"housing\";\"loan\";\"contact\";\"day\";\"month\";\"duration\";\"campaign\";\"pdays\";\"previous\";\"poutcome\";\"y\"</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>30;\"unemployed\";\"married\";\"primary\";\"no\";1787;...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>33;\"services\";\"married\";\"secondary\";\"no\";4789;...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>35;\"management\";\"single\";\"tertiary\";\"no\";1350;...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>30;\"management\";\"married\";\"tertiary\";\"no\";1476...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>59;\"blue-collar\";\"married\";\"secondary\";\"no\";0;...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>5</th>\n",
+       "      <td>35;\"management\";\"single\";\"tertiary\";\"no\";747;\"...</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "  age;\"job\";\"marital\";\"education\";\"default\";\"balance\";\"housing\";\"loan\";\"contact\";\"day\";\"month\";\"duration\";\"campaign\";\"pdays\";\"previous\";\"poutcome\";\"y\"\n",
+       "0  30;\"unemployed\";\"married\";\"primary\";\"no\";1787;...                                                                                                  \n",
+       "1  33;\"services\";\"married\";\"secondary\";\"no\";4789;...                                                                                                  \n",
+       "2  35;\"management\";\"single\";\"tertiary\";\"no\";1350;...                                                                                                  \n",
+       "3  30;\"management\";\"married\";\"tertiary\";\"no\";1476...                                                                                                  \n",
+       "4  59;\"blue-collar\";\"married\";\"secondary\";\"no\";0;...                                                                                                  \n",
+       "5  35;\"management\";\"single\";\"tertiary\";\"no\";747;\"...                                                                                                  "
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Display first 6 rows\n",
+    "df.head(6)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "4c39fa5b-5e12-44b3-9563-56b4853d09a4",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>age;\"job\";\"marital\";\"education\";\"default\";\"balance\";\"housing\";\"loan\";\"contact\";\"day\";\"month\";\"duration\";\"campaign\";\"pdays\";\"previous\";\"poutcome\";\"y\"</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>4515</th>\n",
+       "      <td>32;\"services\";\"single\";\"secondary\";\"no\";473;\"y...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4516</th>\n",
+       "      <td>33;\"services\";\"married\";\"secondary\";\"no\";-333;...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4517</th>\n",
+       "      <td>57;\"self-employed\";\"married\";\"tertiary\";\"yes\";...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4518</th>\n",
+       "      <td>57;\"technician\";\"married\";\"secondary\";\"no\";295...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4519</th>\n",
+       "      <td>28;\"blue-collar\";\"married\";\"secondary\";\"no\";11...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4520</th>\n",
+       "      <td>44;\"entrepreneur\";\"single\";\"tertiary\";\"no\";113...</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "     age;\"job\";\"marital\";\"education\";\"default\";\"balance\";\"housing\";\"loan\";\"contact\";\"day\";\"month\";\"duration\";\"campaign\";\"pdays\";\"previous\";\"poutcome\";\"y\"\n",
+       "4515  32;\"services\";\"single\";\"secondary\";\"no\";473;\"y...                                                                                                  \n",
+       "4516  33;\"services\";\"married\";\"secondary\";\"no\";-333;...                                                                                                  \n",
+       "4517  57;\"self-employed\";\"married\";\"tertiary\";\"yes\";...                                                                                                  \n",
+       "4518  57;\"technician\";\"married\";\"secondary\";\"no\";295...                                                                                                  \n",
+       "4519  28;\"blue-collar\";\"married\";\"secondary\";\"no\";11...                                                                                                  \n",
+       "4520  44;\"entrepreneur\";\"single\";\"tertiary\";\"no\";113...                                                                                                  "
+      ]
+     },
+     "execution_count": 14,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Display last 6 rows \n",
+    "df.tail(6)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8f08a09f-b010-463c-9258-21773737e22b",
+   "metadata": {},
+   "source": [
+    "## Retrieving sample rows from the data frames"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "3f85c971-7aa3-4510-bb43-08554f17e291",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>age;\"job\";\"marital\";\"education\";\"default\";\"balance\";\"housing\";\"loan\";\"contact\";\"day\";\"month\";\"duration\";\"campaign\";\"pdays\";\"previous\";\"poutcome\";\"y\"</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>965</th>\n",
+       "      <td>33;\"management\";\"single\";\"tertiary\";\"no\";3143;...</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "    age;\"job\";\"marital\";\"education\";\"default\";\"balance\";\"housing\";\"loan\";\"contact\";\"day\";\"month\";\"duration\";\"campaign\";\"pdays\";\"previous\";\"poutcome\";\"y\"\n",
+       "965  33;\"management\";\"single\";\"tertiary\";\"no\";3143;...                                                                                                  "
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Display random 7 sample rows\n",
+    "df.sample()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "ee1e3368-5bee-494d-9cec-56d0b807f987",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>age;\"job\";\"marital\";\"education\";\"default\";\"balance\";\"housing\";\"loan\";\"contact\";\"day\";\"month\";\"duration\";\"campaign\";\"pdays\";\"previous\";\"poutcome\";\"y\"</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>132</th>\n",
+       "      <td>43;\"blue-collar\";\"married\";\"unknown\";\"yes\";-71...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3226</th>\n",
+       "      <td>34;\"management\";\"married\";\"tertiary\";\"no\";1518...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2483</th>\n",
+       "      <td>40;\"blue-collar\";\"married\";\"secondary\";\"no\";27...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1743</th>\n",
+       "      <td>51;\"self-employed\";\"married\";\"secondary\";\"yes\"...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2303</th>\n",
+       "      <td>43;\"admin.\";\"married\";\"unknown\";\"no\";3485;\"no\"...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3417</th>\n",
+       "      <td>55;\"services\";\"divorced\";\"tertiary\";\"no\";1983;...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2038</th>\n",
+       "      <td>33;\"blue-collar\";\"single\";\"secondary\";\"no\";513...</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "     age;\"job\";\"marital\";\"education\";\"default\";\"balance\";\"housing\";\"loan\";\"contact\";\"day\";\"month\";\"duration\";\"campaign\";\"pdays\";\"previous\";\"poutcome\";\"y\"\n",
+       "132   43;\"blue-collar\";\"married\";\"unknown\";\"yes\";-71...                                                                                                  \n",
+       "3226  34;\"management\";\"married\";\"tertiary\";\"no\";1518...                                                                                                  \n",
+       "2483  40;\"blue-collar\";\"married\";\"secondary\";\"no\";27...                                                                                                  \n",
+       "1743  51;\"self-employed\";\"married\";\"secondary\";\"yes\"...                                                                                                  \n",
+       "2303  43;\"admin.\";\"married\";\"unknown\";\"no\";3485;\"no\"...                                                                                                  \n",
+       "3417  55;\"services\";\"divorced\";\"tertiary\";\"no\";1983;...                                                                                                  \n",
+       "2038  33;\"blue-collar\";\"single\";\"secondary\";\"no\";513...                                                                                                  "
+      ]
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.sample(7)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0b013995-6faf-4c8f-a658-181083cd27f4",
+   "metadata": {},
+   "source": [
+    "## Retrieving information about data frames"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "f70998ca-9a63-46a6-ba74-4746470ce37d",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'pandas.core.frame.DataFrame'>\n",
+      "RangeIndex: 4521 entries, 0 to 4520\n",
+      "Data columns (total 1 columns):\n",
+      " #   Column                                                                                                                                                Non-Null Count  Dtype \n",
+      "---  ------                                                                                                                                                --------------  ----- \n",
+      " 0   age;\"job\";\"marital\";\"education\";\"default\";\"balance\";\"housing\";\"loan\";\"contact\";\"day\";\"month\";\"duration\";\"campaign\";\"pdays\";\"previous\";\"poutcome\";\"y\"  4521 non-null   object\n",
+      "dtypes: object(1)\n",
+      "memory usage: 35.4+ KB\n"
+     ]
+    }
+   ],
+   "source": [
+    "df.info()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "2f29b3c8-78c6-4608-a420-68676324e627",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "age;\"job\";\"marital\";\"education\";\"default\";\"balance\";\"housing\";\"loan\";\"contact\";\"day\";\"month\";\"duration\";\"campaign\";\"pdays\";\"previous\";\"poutcome\";\"y\"    object\n",
+       "dtype: object"
+      ]
+     },
+     "execution_count": 19,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# display data types\n",
+    "df.dtypes"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "12d244d8-0c9a-439e-a25c-29fcf5120c91",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "object    1\n",
+       "Name: count, dtype: int64"
+      ]
+     },
+     "execution_count": 20,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.dtypes.value_counts()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "d45dd478-4e85-4c48-893d-6dbbfccd7f46",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(4521, 1)"
+      ]
+     },
+     "execution_count": 21,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# display numner of rows and columns\n",
+    "df.shape"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "e2b5733d-4d8a-468b-acc5-a3962d3847b2",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Index(['age;\"job\";\"marital\";\"education\";\"default\";\"balance\";\"housing\";\"loan\";\"contact\";\"day\";\"month\";\"duration\";\"campaign\";\"pdays\";\"previous\";\"poutcome\";\"y\"'], dtype='object')"
+      ]
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.columns"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 38,
+   "id": "cd6d3f8f-0b01-4990-a9b3-5ddde153819b",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Year</th>\n",
+       "      <th>Industry_aggregation_NZSIOC</th>\n",
+       "      <th>Industry_code_NZSIOC</th>\n",
+       "      <th>Industry_name_NZSIOC</th>\n",
+       "      <th>Units</th>\n",
+       "      <th>Variable_code</th>\n",
+       "      <th>Variable_name</th>\n",
+       "      <th>Variable_category</th>\n",
+       "      <th>Value</th>\n",
+       "      <th>Industry_code_ANZSIC06</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>2023</td>\n",
+       "      <td>Level 1</td>\n",
+       "      <td>99999</td>\n",
+       "      <td>All industries</td>\n",
+       "      <td>Dollars (millions)</td>\n",
+       "      <td>H01</td>\n",
+       "      <td>Total income</td>\n",
+       "      <td>Financial performance</td>\n",
+       "      <td>930995</td>\n",
+       "      <td>ANZSIC06 divisions A-S (excluding classes K633...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>2023</td>\n",
+       "      <td>Level 1</td>\n",
+       "      <td>99999</td>\n",
+       "      <td>All industries</td>\n",
+       "      <td>Dollars (millions)</td>\n",
+       "      <td>H04</td>\n",
+       "      <td>Sales, government funding, grants and subsidies</td>\n",
+       "      <td>Financial performance</td>\n",
+       "      <td>821630</td>\n",
+       "      <td>ANZSIC06 divisions A-S (excluding classes K633...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>2023</td>\n",
+       "      <td>Level 1</td>\n",
+       "      <td>99999</td>\n",
+       "      <td>All industries</td>\n",
+       "      <td>Dollars (millions)</td>\n",
+       "      <td>H05</td>\n",
+       "      <td>Interest, dividends and donations</td>\n",
+       "      <td>Financial performance</td>\n",
+       "      <td>84354</td>\n",
+       "      <td>ANZSIC06 divisions A-S (excluding classes K633...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>2023</td>\n",
+       "      <td>Level 1</td>\n",
+       "      <td>99999</td>\n",
+       "      <td>All industries</td>\n",
+       "      <td>Dollars (millions)</td>\n",
+       "      <td>H07</td>\n",
+       "      <td>Non-operating income</td>\n",
+       "      <td>Financial performance</td>\n",
+       "      <td>25010</td>\n",
+       "      <td>ANZSIC06 divisions A-S (excluding classes K633...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>2023</td>\n",
+       "      <td>Level 1</td>\n",
+       "      <td>99999</td>\n",
+       "      <td>All industries</td>\n",
+       "      <td>Dollars (millions)</td>\n",
+       "      <td>H08</td>\n",
+       "      <td>Total expenditure</td>\n",
+       "      <td>Financial performance</td>\n",
+       "      <td>832964</td>\n",
+       "      <td>ANZSIC06 divisions A-S (excluding classes K633...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>...</th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>50980</th>\n",
+       "      <td>2013</td>\n",
+       "      <td>Level 3</td>\n",
+       "      <td>ZZ11</td>\n",
+       "      <td>Food product manufacturing</td>\n",
+       "      <td>Percentage</td>\n",
+       "      <td>H37</td>\n",
+       "      <td>Quick ratio</td>\n",
+       "      <td>Financial ratios</td>\n",
+       "      <td>52</td>\n",
+       "      <td>ANZSIC06 groups C111, C112, C113, C114, C115, ...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>50981</th>\n",
+       "      <td>2013</td>\n",
+       "      <td>Level 3</td>\n",
+       "      <td>ZZ11</td>\n",
+       "      <td>Food product manufacturing</td>\n",
+       "      <td>Percentage</td>\n",
+       "      <td>H38</td>\n",
+       "      <td>Margin on sales of goods for resale</td>\n",
+       "      <td>Financial ratios</td>\n",
+       "      <td>40</td>\n",
+       "      <td>ANZSIC06 groups C111, C112, C113, C114, C115, ...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>50982</th>\n",
+       "      <td>2013</td>\n",
+       "      <td>Level 3</td>\n",
+       "      <td>ZZ11</td>\n",
+       "      <td>Food product manufacturing</td>\n",
+       "      <td>Percentage</td>\n",
+       "      <td>H39</td>\n",
+       "      <td>Return on equity</td>\n",
+       "      <td>Financial ratios</td>\n",
+       "      <td>12</td>\n",
+       "      <td>ANZSIC06 groups C111, C112, C113, C114, C115, ...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>50983</th>\n",
+       "      <td>2013</td>\n",
+       "      <td>Level 3</td>\n",
+       "      <td>ZZ11</td>\n",
+       "      <td>Food product manufacturing</td>\n",
+       "      <td>Percentage</td>\n",
+       "      <td>H40</td>\n",
+       "      <td>Return on total assets</td>\n",
+       "      <td>Financial ratios</td>\n",
+       "      <td>5</td>\n",
+       "      <td>ANZSIC06 groups C111, C112, C113, C114, C115, ...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>50984</th>\n",
+       "      <td>2013</td>\n",
+       "      <td>Level 3</td>\n",
+       "      <td>ZZ11</td>\n",
+       "      <td>Food product manufacturing</td>\n",
+       "      <td>Percentage</td>\n",
+       "      <td>H41</td>\n",
+       "      <td>Liabilities structure</td>\n",
+       "      <td>Financial ratios</td>\n",
+       "      <td>46</td>\n",
+       "      <td>ANZSIC06 groups C111, C112, C113, C114, C115, ...</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "<p>50985 rows × 10 columns</p>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "       Year Industry_aggregation_NZSIOC Industry_code_NZSIOC  \\\n",
+       "0      2023                     Level 1                99999   \n",
+       "1      2023                     Level 1                99999   \n",
+       "2      2023                     Level 1                99999   \n",
+       "3      2023                     Level 1                99999   \n",
+       "4      2023                     Level 1                99999   \n",
+       "...     ...                         ...                  ...   \n",
+       "50980  2013                     Level 3                 ZZ11   \n",
+       "50981  2013                     Level 3                 ZZ11   \n",
+       "50982  2013                     Level 3                 ZZ11   \n",
+       "50983  2013                     Level 3                 ZZ11   \n",
+       "50984  2013                     Level 3                 ZZ11   \n",
+       "\n",
+       "             Industry_name_NZSIOC               Units Variable_code  \\\n",
+       "0                  All industries  Dollars (millions)           H01   \n",
+       "1                  All industries  Dollars (millions)           H04   \n",
+       "2                  All industries  Dollars (millions)           H05   \n",
+       "3                  All industries  Dollars (millions)           H07   \n",
+       "4                  All industries  Dollars (millions)           H08   \n",
+       "...                           ...                 ...           ...   \n",
+       "50980  Food product manufacturing          Percentage           H37   \n",
+       "50981  Food product manufacturing          Percentage           H38   \n",
+       "50982  Food product manufacturing          Percentage           H39   \n",
+       "50983  Food product manufacturing          Percentage           H40   \n",
+       "50984  Food product manufacturing          Percentage           H41   \n",
+       "\n",
+       "                                         Variable_name      Variable_category  \\\n",
+       "0                                         Total income  Financial performance   \n",
+       "1      Sales, government funding, grants and subsidies  Financial performance   \n",
+       "2                    Interest, dividends and donations  Financial performance   \n",
+       "3                                 Non-operating income  Financial performance   \n",
+       "4                                    Total expenditure  Financial performance   \n",
+       "...                                                ...                    ...   \n",
+       "50980                                      Quick ratio       Financial ratios   \n",
+       "50981              Margin on sales of goods for resale       Financial ratios   \n",
+       "50982                                 Return on equity       Financial ratios   \n",
+       "50983                           Return on total assets       Financial ratios   \n",
+       "50984                            Liabilities structure       Financial ratios   \n",
+       "\n",
+       "        Value                             Industry_code_ANZSIC06  \n",
+       "0      930995  ANZSIC06 divisions A-S (excluding classes K633...  \n",
+       "1      821630  ANZSIC06 divisions A-S (excluding classes K633...  \n",
+       "2       84354  ANZSIC06 divisions A-S (excluding classes K633...  \n",
+       "3       25010  ANZSIC06 divisions A-S (excluding classes K633...  \n",
+       "4      832964  ANZSIC06 divisions A-S (excluding classes K633...  \n",
+       "...       ...                                                ...  \n",
+       "50980      52  ANZSIC06 groups C111, C112, C113, C114, C115, ...  \n",
+       "50981      40  ANZSIC06 groups C111, C112, C113, C114, C115, ...  \n",
+       "50982      12  ANZSIC06 groups C111, C112, C113, C114, C115, ...  \n",
+       "50983       5  ANZSIC06 groups C111, C112, C113, C114, C115, ...  \n",
+       "50984      46  ANZSIC06 groups C111, C112, C113, C114, C115, ...  \n",
+       "\n",
+       "[50985 rows x 10 columns]"
+      ]
+     },
+     "execution_count": 38,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Read text file \n",
+    "df_csv = pd.read_csv(\"C:\\\\Users\\\\shubh\\\\Documents\\\\5th semester\\\\pandas\\\\dataset\\\\annual-enterprise-survey-2023-financial-year-provisional.csv\")\n",
+    "df_csv"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 40,
+   "id": "9d434501-acee-4d02-90da-86d7ac32f64b",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0    Dollars (millions)\n",
+       "1    Dollars (millions)\n",
+       "2    Dollars (millions)\n",
+       "Name: Units, dtype: object"
+      ]
+     },
+     "execution_count": 40,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Display age column first 3 rows data \n",
+    "df_csv['Units'].head(3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 42,
+   "id": "3c10e314-b8a3-47e9-98be-70b97e38018f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Units</th>\n",
+       "      <th>Variable_code</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>Dollars (millions)</td>\n",
+       "      <td>H01</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>Dollars (millions)</td>\n",
+       "      <td>H04</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>Dollars (millions)</td>\n",
+       "      <td>H05</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "                Units Variable_code\n",
+       "0  Dollars (millions)           H01\n",
+       "1  Dollars (millions)           H04\n",
+       "2  Dollars (millions)           H05"
+      ]
+     },
+     "execution_count": 42,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df_csv[['Units','Variable_code']].head(3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "id": "9c77e565-1510-45d2-8642-15b8ac97ed71",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>age;\"job\";\"marital\";\"education\";\"default\";\"balance\";\"housing\";\"loan\";\"contact\";\"day\";\"month\";\"duration\";\"campaign\";\"pdays\";\"previous\";\"poutcome\";\"y\"</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>35;\"management\";\"single\";\"tertiary\";\"no\";1350;...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>30;\"management\";\"married\";\"tertiary\";\"no\";1476...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>59;\"blue-collar\";\"married\";\"secondary\";\"no\";0;...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>5</th>\n",
+       "      <td>35;\"management\";\"single\";\"tertiary\";\"no\";747;\"...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>6</th>\n",
+       "      <td>36;\"self-employed\";\"married\";\"tertiary\";\"no\";3...</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "  age;\"job\";\"marital\";\"education\";\"default\";\"balance\";\"housing\";\"loan\";\"contact\";\"day\";\"month\";\"duration\";\"campaign\";\"pdays\";\"previous\";\"poutcome\";\"y\"\n",
+       "2  35;\"management\";\"single\";\"tertiary\";\"no\";1350;...                                                                                                  \n",
+       "3  30;\"management\";\"married\";\"tertiary\";\"no\";1476...                                                                                                  \n",
+       "4  59;\"blue-collar\";\"married\";\"secondary\";\"no\";0;...                                                                                                  \n",
+       "5  35;\"management\";\"single\";\"tertiary\";\"no\";747;\"...                                                                                                  \n",
+       "6  36;\"self-employed\";\"married\";\"tertiary\";\"no\";3...                                                                                                  "
+      ]
+     },
+     "execution_count": 28,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df[2:7]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "id": "2b4d0d8a-bf40-443a-afa4-d463cafffb1c",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>age;\"job\";\"marital\";\"education\";\"default\";\"balance\";\"housing\";\"loan\";\"contact\";\"day\";\"month\";\"duration\";\"campaign\";\"pdays\";\"previous\";\"poutcome\";\"y\"</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>30;\"unemployed\";\"married\";\"primary\";\"no\";1787;...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>33;\"services\";\"married\";\"secondary\";\"no\";4789;...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>35;\"management\";\"single\";\"tertiary\";\"no\";1350;...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>30;\"management\";\"married\";\"tertiary\";\"no\";1476...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>59;\"blue-collar\";\"married\";\"secondary\";\"no\";0;...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>5</th>\n",
+       "      <td>35;\"management\";\"single\";\"tertiary\";\"no\";747;\"...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>6</th>\n",
+       "      <td>36;\"self-employed\";\"married\";\"tertiary\";\"no\";3...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>7</th>\n",
+       "      <td>39;\"technician\";\"married\";\"secondary\";\"no\";147...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>8</th>\n",
+       "      <td>41;\"entrepreneur\";\"married\";\"tertiary\";\"no\";22...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>9</th>\n",
+       "      <td>43;\"services\";\"married\";\"primary\";\"no\";-88;\"ye...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>10</th>\n",
+       "      <td>39;\"services\";\"married\";\"secondary\";\"no\";9374;...</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "   age;\"job\";\"marital\";\"education\";\"default\";\"balance\";\"housing\";\"loan\";\"contact\";\"day\";\"month\";\"duration\";\"campaign\";\"pdays\";\"previous\";\"poutcome\";\"y\"\n",
+       "0   30;\"unemployed\";\"married\";\"primary\";\"no\";1787;...                                                                                                  \n",
+       "1   33;\"services\";\"married\";\"secondary\";\"no\";4789;...                                                                                                  \n",
+       "2   35;\"management\";\"single\";\"tertiary\";\"no\";1350;...                                                                                                  \n",
+       "3   30;\"management\";\"married\";\"tertiary\";\"no\";1476...                                                                                                  \n",
+       "4   59;\"blue-collar\";\"married\";\"secondary\";\"no\";0;...                                                                                                  \n",
+       "5   35;\"management\";\"single\";\"tertiary\";\"no\";747;\"...                                                                                                  \n",
+       "6   36;\"self-employed\";\"married\";\"tertiary\";\"no\";3...                                                                                                  \n",
+       "7   39;\"technician\";\"married\";\"secondary\";\"no\";147...                                                                                                  \n",
+       "8   41;\"entrepreneur\";\"married\";\"tertiary\";\"no\";22...                                                                                                  \n",
+       "9   43;\"services\";\"married\";\"primary\";\"no\";-88;\"ye...                                                                                                  \n",
+       "10  39;\"services\";\"married\";\"secondary\";\"no\";9374;...                                                                                                  "
+      ]
+     },
+     "execution_count": 29,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df[:11]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "id": "eed314e0-8421-4175-bbbc-7bedab14c88c",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>age;\"job\";\"marital\";\"education\";\"default\";\"balance\";\"housing\";\"loan\";\"contact\";\"day\";\"month\";\"duration\";\"campaign\";\"pdays\";\"previous\";\"poutcome\";\"y\"</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>4519</th>\n",
+       "      <td>28;\"blue-collar\";\"married\";\"secondary\";\"no\";11...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4520</th>\n",
+       "      <td>44;\"entrepreneur\";\"single\";\"tertiary\";\"no\";113...</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "     age;\"job\";\"marital\";\"education\";\"default\";\"balance\";\"housing\";\"loan\";\"contact\";\"day\";\"month\";\"duration\";\"campaign\";\"pdays\";\"previous\";\"poutcome\";\"y\"\n",
+       "4519  28;\"blue-collar\";\"married\";\"secondary\";\"no\";11...                                                                                                  \n",
+       "4520  44;\"entrepreneur\";\"single\";\"tertiary\";\"no\";113...                                                                                                  "
+      ]
+     },
+     "execution_count": 30,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df[-2:]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "id": "df536edf-1a48-476a-bcdb-dc9c434faefe",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Requirement already satisfied: ucimlrepo in c:\\users\\shubh\\anaconda3\\lib\\site-packages (0.0.7)\n",
+      "Requirement already satisfied: pandas>=1.0.0 in c:\\users\\shubh\\anaconda3\\lib\\site-packages (from ucimlrepo) (2.2.2)\n",
+      "Requirement already satisfied: certifi>=2020.12.5 in c:\\users\\shubh\\anaconda3\\lib\\site-packages (from ucimlrepo) (2025.4.26)\n",
+      "Requirement already satisfied: numpy>=1.26.0 in c:\\users\\shubh\\anaconda3\\lib\\site-packages (from pandas>=1.0.0->ucimlrepo) (1.26.4)\n",
+      "Requirement already satisfied: python-dateutil>=2.8.2 in c:\\users\\shubh\\anaconda3\\lib\\site-packages (from pandas>=1.0.0->ucimlrepo) (2.9.0.post0)\n",
+      "Requirement already satisfied: pytz>=2020.1 in c:\\users\\shubh\\anaconda3\\lib\\site-packages (from pandas>=1.0.0->ucimlrepo) (2024.1)\n",
+      "Requirement already satisfied: tzdata>=2022.7 in c:\\users\\shubh\\anaconda3\\lib\\site-packages (from pandas>=1.0.0->ucimlrepo) (2023.3)\n",
+      "Requirement already satisfied: six>=1.5 in c:\\users\\shubh\\anaconda3\\lib\\site-packages (from python-dateutil>=2.8.2->pandas>=1.0.0->ucimlrepo) (1.16.0)\n",
+      "Note: you may need to restart the kernel to use updated packages.\n"
+     ]
+    }
+   ],
+   "source": [
+    "pip install ucimlrepo"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 36,
+   "id": "6756d80e-9f10-451d-afcb-70552cadf186",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'uci_id': 186, 'name': 'Wine Quality', 'repository_url': 'https://archive.ics.uci.edu/dataset/186/wine+quality', 'data_url': 'https://archive.ics.uci.edu/static/public/186/data.csv', 'abstract': 'Two datasets are included, related to red and white vinho verde wine samples, from the north of Portugal. The goal is to model wine quality based on physicochemical tests (see [Cortez et al., 2009], http://www3.dsi.uminho.pt/pcortez/wine/).', 'area': 'Business', 'tasks': ['Classification', 'Regression'], 'characteristics': ['Multivariate'], 'num_instances': 4898, 'num_features': 11, 'feature_types': ['Real'], 'demographics': [], 'target_col': ['quality'], 'index_col': None, 'has_missing_values': 'no', 'missing_values_symbol': None, 'year_of_dataset_creation': 2009, 'last_updated': 'Wed Nov 15 2023', 'dataset_doi': '10.24432/C56S3T', 'creators': ['Paulo Cortez', 'A. Cerdeira', 'F. Almeida', 'T. Matos', 'J. Reis'], 'intro_paper': {'ID': 252, 'type': 'NATIVE', 'title': 'Modeling wine preferences by data mining from physicochemical properties', 'authors': 'P. Cortez, A. Cerdeira, Fernando Almeida, Telmo Matos, J. Reis', 'venue': 'Decision Support Systems', 'year': 2009, 'journal': None, 'DOI': None, 'URL': 'https://www.semanticscholar.org/paper/Modeling-wine-preferences-by-data-mining-from-Cortez-Cerdeira/bf15a0ccc14ac1deb5cea570c870389c16be019c', 'sha': None, 'corpus': None, 'arxiv': None, 'mag': None, 'acl': None, 'pmid': None, 'pmcid': None}, 'additional_info': {'summary': 'The two datasets are related to red and white variants of the Portuguese \"Vinho Verde\" wine. For more details, consult: http://www.vinhoverde.pt/en/ or the reference [Cortez et al., 2009].  Due to privacy and logistic issues, only physicochemical (inputs) and sensory (the output) variables are available (e.g. there is no data about grape types, wine brand, wine selling price, etc.).\\n\\nThese datasets can be viewed as classification or regression tasks.  The classes are ordered and not balanced (e.g. there are many more normal wines than excellent or poor ones). Outlier detection algorithms could be used to detect the few excellent or poor wines. Also, we are not sure if all input variables are relevant. So it could be interesting to test feature selection methods.\\n', 'purpose': None, 'funded_by': None, 'instances_represent': None, 'recommended_data_splits': None, 'sensitive_data': None, 'preprocessing_description': None, 'variable_info': 'For more information, read [Cortez et al., 2009].\\r\\nInput variables (based on physicochemical tests):\\r\\n   1 - fixed acidity\\r\\n   2 - volatile acidity\\r\\n   3 - citric acid\\r\\n   4 - residual sugar\\r\\n   5 - chlorides\\r\\n   6 - free sulfur dioxide\\r\\n   7 - total sulfur dioxide\\r\\n   8 - density\\r\\n   9 - pH\\r\\n   10 - sulphates\\r\\n   11 - alcohol\\r\\nOutput variable (based on sensory data): \\r\\n   12 - quality (score between 0 and 10)', 'citation': None}}\n",
+      "                    name     role         type demographic  \\\n",
+      "0          fixed_acidity  Feature   Continuous        None   \n",
+      "1       volatile_acidity  Feature   Continuous        None   \n",
+      "2            citric_acid  Feature   Continuous        None   \n",
+      "3         residual_sugar  Feature   Continuous        None   \n",
+      "4              chlorides  Feature   Continuous        None   \n",
+      "5    free_sulfur_dioxide  Feature   Continuous        None   \n",
+      "6   total_sulfur_dioxide  Feature   Continuous        None   \n",
+      "7                density  Feature   Continuous        None   \n",
+      "8                     pH  Feature   Continuous        None   \n",
+      "9              sulphates  Feature   Continuous        None   \n",
+      "10               alcohol  Feature   Continuous        None   \n",
+      "11               quality   Target      Integer        None   \n",
+      "12                 color    Other  Categorical        None   \n",
+      "\n",
+      "               description units missing_values  \n",
+      "0                     None  None             no  \n",
+      "1                     None  None             no  \n",
+      "2                     None  None             no  \n",
+      "3                     None  None             no  \n",
+      "4                     None  None             no  \n",
+      "5                     None  None             no  \n",
+      "6                     None  None             no  \n",
+      "7                     None  None             no  \n",
+      "8                     None  None             no  \n",
+      "9                     None  None             no  \n",
+      "10                    None  None             no  \n",
+      "11  score between 0 and 10  None             no  \n",
+      "12            red or white  None             no  \n"
+     ]
+    }
+   ],
+   "source": [
+    "from ucimlrepo import fetch_ucirepo \n",
+    "  \n",
+    "# fetch dataset \n",
+    "wine_quality = fetch_ucirepo(id=186) \n",
+    "  \n",
+    "# data (as pandas dataframes) \n",
+    "X = wine_quality.data.features \n",
+    "y = wine_quality.data.targets \n",
+    "  \n",
+    "# metadata \n",
+    "print(wine_quality.metadata) \n",
+    "  \n",
+    "# variable information \n",
+    "print(wine_quality.variables) "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "434e3106-0bc3-49c1-86a3-08bfbf913319",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python [conda env:base] *",
+   "language": "python",
+   "name": "conda-base-py"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.7"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
